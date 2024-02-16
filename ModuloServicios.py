@@ -1,58 +1,34 @@
 import os
 import json
 
-def validarIden(identidad):
-    if identidad == "":
-        return False
-    try:
-        identidad = int(identidad) 
-        if identidad > 0:
-            return True
-        else:
-            return False
-    except ValueError:
-        return False
 
-def validarEdad(edad):
-    try:
-        edad = int(edad)
-        if 16 <= edad <= 28:
-            return True
-        else:
-            return False
-    except ValueError:
-        return False
 
-def inscripciones():
+def inscripciones_servicios():
     
     ruta = os.path.join(os.path.dirname(__file__), 'InscritosCampers.json')
     with open(ruta,'r') as archivo:
         datos_json = json.load(archivo)
-    estado = 'nuevo'
-    nueva_inscripcion = {}
+    
+    nuevo_servicio = {}
     identidad = input('Ingresa el número de identidad del usuario: ')
-    while not validarIden(identidad):
-        print('El número de identidad debe ser un entero positivo.')
-        identidad = input('Ingresa el número de identidad del usuario: ')
-    nueva_inscripcion['identidad'] = int(identidad)
-    nueva_inscripcion['nombre'] = input('Ingresa el nombre del usuario: ')
-    nueva_inscripcion['apellido1'] = input('Ingrese el primer apellido del usuario: ')
-    nueva_inscripcion['direccion'] = input('Ingrese la direccion del usuario: ')
-    nueva_inscripcion['edad'] = int(input('Ingrese la edad: '))
-    nueva_inscripcion['celular'] = int(input('Ingrese el numero de telefono '))
-    nueva_inscripcion['estado'] = estado
+    nuevo_servicio['identidad'] = int(identidad)
+    nuevo_servicio['nombre'] = input('Ingresa el nombre del servicio: ')
+    nuevo_servicio['apellido1'] = input('Ingrese el primer apellido del usuario: ')
+    nuevo_servicio['direccion'] = input('Ingrese la direccion del usuario: ')
+    nuevo_servicio['edad'] = int(input('Ingrese la edad: '))
+    nuevo_servicio['celular'] = int(input('Ingrese el numero de telefono '))
     
     
-    datos_json['datos']['usuarios'].append(nueva_inscripcion)
+    datos_json['datos']['servicios'].append(nuevo_servicio)
     with open(ruta,'w') as archivo:
         json.dump(datos_json,archivo,indent=4)
       
 
-def actualizar_usuarios():
+def actualizar_servicios():
     ruta = os.path.join(os.path.dirname(__file__), 'InscritosCampers.json')
     with open(ruta,'r') as archivo:
         datos_json = json.load(archivo)
-    campers = datos_json["datos"]["usuarios"]
+    campers = datos_json["datos"]["servicios"]
     identidad = input("Ingresa el id del Camper que quieras actualizar: ")
     try:
         identidad = int(identidad)
@@ -87,7 +63,7 @@ def actualizar_usuarios():
         json.dump(datos_json, archivo, indent=4)
 
 
-def buscar():
+def buscar_servicios():
     identidad = input("Ingresa el id del Camper que quieras buscar: ")
     try:
         identidad = int(identidad)
@@ -95,7 +71,7 @@ def buscar():
         print('El id del Camper debe ser un número válido.')
     return identidad
 
-def mostrar_datos(ruta):
+def mostrar_servicios(ruta):
   with open(ruta, 'r') as archivo:
     datos_json = json.load(archivo)
   usuario = datos_json["datos"]["usuarios"]

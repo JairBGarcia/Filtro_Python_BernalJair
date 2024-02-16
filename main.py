@@ -1,5 +1,5 @@
 import os
-from Trainers import leer_trainer, Añadir_trainer, Actualizar_trainer, Eliminar_trainer
+from ModuloServicios import leer_trainer, Añadir_trainer, Actualizar_trainer, Eliminar_trainer
 
 def clear_console():
     import os
@@ -60,72 +60,36 @@ def actualizar_trainers():
 
 def eliminar_trainers():
     print("Accediste a Eliminar Trainers.")
-
+from ModuloServicios import inscripciones_servicios
+from ModuloServicios import actualizar_servicios
+from ModuloServicios import buscar_servicios
+from ModuloServicios import mostrar_servicios
 def menu_trainers():
     clear_console()
     while True:
-        print("1. Leer Trainers")
-        print("2. Añadir Trainers")
-        print("3. Actualizar Trainers")
-        print("4. Eliminar Trainers")
+        print("1. Añadir Servicio")
+        print("2. Actualizar Servicio")
+        print("3. Buscar servicio")
+        print("4. Mostrar servicio")
         print("5. Volver al menú principal")
 
         user_input = get_valid_input(["1", "2", "3", "4", "5"])
         if user_input == "1":
-            leer_trainer()
+            inscripciones_servicios()
         elif user_input == "2":
-            Añadir_trainer()
+            actualizar_servicios()
         elif user_input == "3":
-            Actualizar_trainer()
+            buscar_servicios()
         elif user_input == "4":
-            Eliminar_trainer()
+            mostrar_servicios()
         elif user_input == "5":
-            print("Volviendo al menú principal.")
-            break
-
-def menu_coordinadores():
-    clear_console()
-    while True:
-        print("Rol de Coordinador:")
-        print("1. Agregar Coordinadores")
-        print("2. Agregar Trainers")
-        print('3. Incripciones')
-        print("4. Prueba Inicial")
-        print("5. Distribución de Aulas")
-        print("6. Módulo de Reportes")
-        print("7. Notas")
-        print("8. Rutas")
-        print("9. Volver al menú principal")
-
-        user_input = get_valid_input(["1", "2", "3", "4", "5", "6","7","8","9"])
-        if user_input == "1":
-            print("Accediste a Agregar Coordinadores.")
-            from coordinadores import Coordinadores
-        if user_input == "2":
-            menu_inscripcionesCampers()
-        if user_input == "3":
-            menu_trainers()
-        elif user_input == "4":
-            print("Accediste a Prueba Inicial.")
-            from pruebaInicialCampers import pruebaInicial
-        elif user_input == "5":
-            print("Accediste a Distribución de Aulas.")
-            from distribucionAulas import distribucionAulas1
-        elif user_input == "6":
-            menu_reportes()
-        elif user_input == "7":
-            menu_notas()
-        elif user_input == "8":
-            menu_rutas()
-        elif user_input == "9":
-            print("Volviendo al menú principal.")
+            print("Volviendo sal menú principal.")
             break
 
 
-from ModuloReportes import camperEstadoInscrito
-from ModuloReportes import camperEstadoAprobado
-from ModuloReportes import bajoRendimiento
-from ModuloReportes import Trainers
+
+from ModuloReportes import usuario_antiguo
+from ModuloReportes import usuario_nuevo
 
 
 def menu_reportes():
@@ -133,68 +97,29 @@ def menu_reportes():
     clear_console()
     while True:
         print("Menu de Reportes:")
-        print("1. Camper Estado Inscrito")
-        print("2. Camper Estado Aprobado prueba inicial")
-        print("3. Trainers")
-        print("4. Bajo Rendimiento")
-        print("5. Campers y Trainers asociados a una ruta")
-        print('6. Campers que perdieron y aprobaron por modulos')
-        print('7. Volver al menu coordinador')
+        print("1. Usuarios Nuevos")
+        print("2. Usuarios Antiguos")
+        print("3. Servicios")
+        print("4. Volver")
+        
 
         user_input = get_valid_input(["1", "2", "3", "4", "5","6","7"])
         if user_input == "1":
-            print("Accediste a Camper Estado Inscrito.")
-            camperEstadoInscrito()
+            print("Accediste a usuario Nuevos.")
+            usuario_nuevo()
         elif user_input == "2":
-            print("Accediste a Camper Estado Aprobado.")
-            camperEstadoAprobado()
+            print("Accediste a Usuario Antiguo.")
+            usuario_antiguo()
         elif user_input == "3":
-            print("Accediste a Trainers.")
-            from ModuloReportes import Trainers
+            print("Accediste a Usuario Antiguo.")
+            usuario_antiguo()
         elif user_input == "4":
-            print("Accediste a Bajo Rendimiento.")
-            from ModuloReportes import bajoRendimiento
-        elif user_input == "5":
-            print("Accediste a Campers y Trainers asociados a una ruta.")
-            from ModuloReportes import CamperFuncion
-        elif user_input == "6":
-            print("Accediste a campers que perdieron y aprobaron por modulos")
-            from ModuloReportes import CamperAprobadosYReprobados
-        elif user_input == "7":
             print('Volviendo al menu coordinador')
-            break
-
-def menu_notas():
-    clear_console()
-    while True:
-        print("Menu de Notas:")
-        print("1. Actualizar Nota y Rendimiento")
-        print("2. Volver al menú de Coordinadores")
-
-        user_input = get_valid_input(["1", "2"])
-        if user_input == "1":
-            from notas2 import notas
-        elif user_input == "2":
-            print("Volviendo al menú de Coordinadores.")
             break
 
 def actualizar_nota_y_rendimiento():
     print("Accediste a Actualizar Nota y Rendimiento.")
 
-def menu_rutas():
-    
-    clear_console()
-    while True:
-        print("Menu de Rutas:")
-        print("1. Configurar Ruta")
-        print("2. Volver al menú de Coordinadores")
-
-        user_input = get_valid_input(["1", "2"])
-        if user_input == "1":
-            from rutas import rutas1
-        elif user_input == "2":
-            print("Volviendo al menú de Coordinadores.")
-            break
 
 def configurar_ruta():
     print("Accediste a Configurar Ruta.")
@@ -222,7 +147,7 @@ def menu_principal():
         elif user_input == "2":
             menu_trainers()
         elif user_input == "3":
-            menu_coordinadores()
+            menu_reportes()
 
 if __name__ == "__main__":
     menu_principal()

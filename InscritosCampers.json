@@ -1,0 +1,27 @@
+{
+    "datos": {
+        "usuarios": [
+            {
+                "identidad": 1,
+                "nombre": "fsfd",
+                "apellido1": "sdf",
+                "direccion": "sdf",
+                "edad": 1,
+                "celular": 1,
+                "estado": "antiguo"
+            }
+        ],
+
+        "servicios": [
+            {
+                "identidad": 1,
+                "nombre": "fsfd",
+                "apellido1": "sdf",
+                "direccion": "sdf",
+                "edad": 1,
+                "celular": 1,
+                "estado": "antiguo"
+            }
+        ]
+    }
+}
